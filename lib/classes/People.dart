@@ -1,9 +1,9 @@
-class Peaple {
+class People {
   String _name = "";
   double _weight = 0;
   double _height = 0;
 
-  Peaple(String name, double weight, double height) {
+  People(String name, double weight, double height) {
     _name = name;
     _weight = weight;
     _height = height;

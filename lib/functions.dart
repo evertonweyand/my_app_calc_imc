@@ -49,9 +49,10 @@ void imcPrintResult(double imcValue, [String? peopleName]) {
   }
   if (peopleName != null && peopleName.isNotEmpty) {
     print(
-        '${peopleName[0].toUpperCase() + peopleName.substring(1).toLowerCase()} a classificação de seu IMC é: $imcClassificacao (Valor: $imcValue)');
+        '${peopleName[0].toUpperCase() + peopleName.substring(1).toLowerCase()} a classificação de seu IMC é: $imcClassificacao (Valor: ${imcValue.toStringAsFixed(4)})');
   } else {
-    print('A classificação de seu IMC é: $imcClassificacao (Valor: $imcValue)');
+    print(
+        'A classificação de seu IMC é: $imcClassificacao (Valor: ${imcValue.toStringAsFixed(4)})');
   }
 }
 

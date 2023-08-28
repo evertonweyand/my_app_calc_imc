@@ -7,6 +7,14 @@ String readConsoleString(String label) {
   return inputUser;
 }
 
+String readConsoleName(String label) {
+  String inputUser = "";
+  do {
+    inputUser = readConsoleString(label);
+  } while (inputUser == '');
+  return inputUser;
+}
+
 double readConsoleDouble(String label) {
   String inputUser = readConsoleString(label);
   double number = double.tryParse(inputUser) ?? -99;
@@ -22,7 +30,7 @@ double readConsoleDouble(String label) {
   return number;
 }
 
-void imcPrintResult(double imcValue) {
+void imcPrintResult(double imcValue, [String? peopleName]) {
   String imcClassificacao = '';
   switch (imcValue) {
     case > 40:
@@ -39,20 +47,34 @@ void imcPrintResult(double imcValue) {
     default:
       imcClassificacao = 'Magreza';
   }
-  print('A classificação de seu IMC é: $imcClassificacao (Valor: $imcValue)');
+  if (peopleName != null && peopleName.isNotEmpty) {
+    print(
+        '${peopleName[0].toUpperCase() + peopleName.substring(1).toLowerCase()} a classificação de seu IMC é: $imcClassificacao (Valor: $imcValue)');
+  } else {
+    print('A classificação de seu IMC é: $imcClassificacao (Valor: $imcValue)');
+  }
 }
 
 void imcPrintTable() {
-  print('*************************************************************');
+  print('');
+  print('***************** Tabela de Referência **********************');
+  print('*                                                           *');
   print('* IMC                CLASSIFICAÇÃO         OBESIDADE (GRAU) *');
   print('* Menor que 18,50       Magreza                  0          *');
   print('* Entre 18.5 e 24.9     Normal                   0          *');
   print('* Entre 25.0 e 29.9     Sobrepeso                I          *');
   print('* Entre 30.0 e 39.9     Obesidade                II         *');
   print('* Acima de 40.0         Obesidade Grave          III        *');
+  print('*                                                           *');
   print('*************************************************************');
 }
 
-double imc_calc(double weight, double height) {
+double imcCalc(double weight, double height) {
+  if (weight == 0) {
+    throw ArgumentError.value(0);
+  }
+  if (height == 0) {
+    throw ArgumentError.value(0);
+  }
   return weight / (height * height);
 }

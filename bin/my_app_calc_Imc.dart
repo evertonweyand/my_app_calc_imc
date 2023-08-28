@@ -1,4 +1,3 @@
-// ignore: file_names
 import 'package:my_app_calc_imc/my_app_calc_imc.dart';
 
 void main(List<String> arguments) {

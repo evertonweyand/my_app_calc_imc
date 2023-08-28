@@ -1,3 +1,5 @@
+import 'package:my_app_calc_imc/functions.dart';
+
 class People {
   String _name = "";
   double _weight = 0;
@@ -35,11 +37,23 @@ class People {
 
   @override
   String toString() {
-    // TODO: implement toString
     return {
       "name": getName(),
       "weight": getWeight(),
       "height": getHeight(),
     }.toString();
+  }
+
+  void printMyIMC() {
+    double imcResult = imcCalc(getWeight(), getHeight());
+
+    print('');
+    print('');
+
+    imcPrintResult(imcResult, getName());
+    imcPrintTable();
+
+    print('');
+    print('');
   }
 }
